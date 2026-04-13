@@ -212,6 +212,11 @@ exclude = ["vdi/host", "examples/custom_plugin"]
 [patch.crates-io]
 libxdo-sys = { path = "libs/libxdo-sys-stub" }
 
+# Patch rust-sciter to fix unsound transmute in SCITER_CREATE_WINDOW_FLAGS::BitOr
+# that panics on Rust 1.82+ (invalid enum discriminant from OR'd flag values)
+[patch.'https://github.com/rustdesk-org/rust-sciter']
+sciter-rs = { path = "libs/rust-sciter" }
+
 [package.metadata.winres]
 LegalCopyright = "Copyright © 2025 Purslane Ltd. All rights reserved."
 ProductName = "RustDesk"
